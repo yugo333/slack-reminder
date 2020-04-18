@@ -1,0 +1,46 @@
+body {
+  position: relative;
+  margin: 0;
+}
+#info {
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 50%;
+  left: 20%;
+}
+#info,
+textarea,
+input {
+  opacity: 0.8;
+  font-size: large;
+}
+#main {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.png {
+  position: absolute;
+  z-index: 5;
+  width: 100px;
+  margin: 20px;
+  animation: rotation 2s ease 0s 1 alternate none running;
+  transition-duration: 1s;
+}
+@keyframes rotation {
+  0% {
+    transform: scale(0.3);
+  }
+
+  50% {
+    transform: scale(0.6) rotate(-45deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(180deg);
+  }
+}
+.png:hover {
+  transform: rotate(640deg);
+}

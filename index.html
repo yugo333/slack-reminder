@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slackReminder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="info">
+      <h3>メンション</h3>
+      <input
+        type="text"
+        id="inputText"
+        placeholder="@メンバー or #チャンネル"
+      />
+      <br />
+      <h3>内容</h3>
+      <textarea
+        name="text"
+        id="text"
+        cols="30"
+        rows="10"
+        placeholder="内容text"
+      ></textarea>
+      <h3>日付</h3>
+      <select id="word">
+        <option value="none">選択してください</option>
+        <option value="1">now</option>
+        <option value="2">in 15 minutes</option>
+        <option value="3">in 30 minutes</option>
+        <option value="4">in 60 minutes</option>
+        <option value="5">10:00</option>
+        <option value="6">12:00</option>
+        <option value="7">14:00</option>
+        <option value="8">16:00</option>
+        <option value="9">19:00</option>
+        <option value="none">（月）/（日）/（年）</option>
+        <option value="10">///</option>
+        <option value="11">at 15:０0 every Monday</option>
+        <option value="12">at 15:０0 every Wednesday</option>
+        <option value="13">at 15:０0 every Friday</option>
+        <option value="14">on the 1th of every month</option>
+        <option value="15">on the 15th of every month</option>
+        <option value="16">me</option>
+      </select>
+      <br /><br />
+      <textarea name="out" id="out" cols="70" rows="10"></textarea>
+    </div>
+    <img src="./icon_slack.png" class="png" alt="" srcset="" />
+    <div id="main"></div>
+    <script src="main.js"></script>
+    <script src="index.js"></script>
+    <script src="three.min.js"></script>
+  </body>
+</html>
