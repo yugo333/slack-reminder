@@ -19,7 +19,10 @@
         // out.textContent = s;
         mText = s;
       } else {
-        mText = "@" + s;
+        inputText.value = "";
+        return alert(
+          "正しく入力してください。半角で@here,@username もしくは、#hogehoge などと記入してください"
+        );
       }
     },
     false
@@ -35,14 +38,20 @@
   );
   select.addEventListener("change", function () {
     let index = this.value;
-    out.innerHTML =
-      "/remind" +
-      " " +
-      mText.trim() +
-      " " +
-      tText.trim() +
-      " " +
-      options[index].innerHTML;
+    if (mText === undefined) {
+      return alert("メンションを入力してください");
+    } else if (tText === undefined) {
+      return alert("本文を入力してください");
+    } else {
+      out.innerHTML =
+        "/remind" +
+        " " +
+        mText.trim() +
+        " " +
+        tText.trim() +
+        " " +
+        options[index].innerHTML;
+    }
   });
 
   copy.addEventListener("click", () => {
