@@ -9,6 +9,8 @@
   let text = document.getElementById("text");
   let tText;
 
+  let copy = document.getElementById("copy");
+
   inputText.addEventListener(
     "keyup",
     function () {
@@ -41,5 +43,10 @@
       tText.trim() +
       " " +
       options[index].innerHTML;
+  });
+
+  copy.addEventListener("click", () => {
+    out.select();
+    document.execCommand("Copy");
   });
 }

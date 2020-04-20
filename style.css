@@ -28,6 +28,13 @@ h3 {
   height: 24vh;
 }
 
+#copy {
+  position: absolute;
+  right: 0px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
 #main {
   position: absolute;
   top: 0;
