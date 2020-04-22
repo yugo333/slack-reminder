@@ -3,30 +3,33 @@
   let select = document.querySelector("#word");
   let options = document.querySelectorAll("#word option");
   let out = document.getElementById("out");
-
-  let inputText = document.getElementById("inputText");
-  let mText;
   let text = document.getElementById("text");
   let tText;
 
   let copy = document.getElementById("copy");
 
-  inputText.addEventListener(
+  // 作成するメッセージ内容の各をここに保存する
+  let createdMessageValues = {
+    sender: "",
+  };
+
+  const messageSender = document.getElementById("messageSender");
+  messageSender.addEventListener(
     "keyup",
-    function () {
-      let s = inputText.value;
-      if (s.match(/@/) || s.match(/#/)) {
-        // out.textContent = s;
-        mText = s;
+    () => {
+      const { value } = messageSender;
+      if (value.match(/@/) || value.match(/#/)) {
+        createdMessageValues.sender = value;
       } else {
-        inputText.value = "";
-        return alert(
+        alert(
           "正しく入力してください。半角で@here,@username もしくは、#hogehoge などと記入してください"
         );
+        messageSender.value = "";
       }
     },
     false
   );
+
   text.addEventListener(
     "keyup",
     function () {
