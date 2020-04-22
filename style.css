@@ -47,9 +47,9 @@ h3 {
   width: 100px;
   margin: 20px;
   animation: rotation 2s ease 0s 1 alternate none running;
-  transition-duration: 1s;
+  /* transition-duration: 1s; */
 }
-@keyframes rotation {
+/* @keyframes rotation {
   0% {
     transform: scale(0.3);
   }
@@ -64,4 +64,4 @@ h3 {
 }
 .png:hover {
   transform: rotate(640deg);
-}
+} */
