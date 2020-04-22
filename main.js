@@ -1,20 +1,20 @@
 "use strict";
 {
-  let select = document.querySelector("#word");
-  let options = document.querySelectorAll("#word option");
-  let out = document.getElementById("out");
+  const select = document.querySelector("#word");
+  const options = document.querySelectorAll("#word option");
+  const out = document.getElementById("out");
 
-  let inputText = document.getElementById("inputText");
+  const inputText = document.getElementById("inputText");
   let mText;
-  let text = document.getElementById("text");
+  const text = document.getElementById("text");
   let tText;
 
-  let copy = document.getElementById("copy");
+  const copy = document.getElementById("copy");
 
   inputText.addEventListener(
     "keyup",
-    function () {
-      let s = inputText.value;
+    () => {
+      const s = inputText.value;
       if (s.match(/@/) || s.match(/#/)) {
         // out.textContent = s;
         mText = s;
@@ -29,15 +29,15 @@
   );
   text.addEventListener(
     "keyup",
-    function () {
-      let s = text.value;
+    () => {
+      const s = text.value;
       // out.textContent = s;
       tText = `"${s}"`;
     },
     false
   );
   select.addEventListener("change", function () {
-    let index = this.value;
+    const index = this.value;
     if (mText === undefined) {
       alert("メンションを入力してください");
     } else if (tText === undefined) {
