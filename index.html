@@ -8,29 +8,33 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="info">
-      <h3>送信先</h3>
-      <input
-        type="text"
-        id="messageSender"
-        placeholder="@メンバー or #チャンネル"
-      />
-      <h3>メッセージ内容</h3>
-      <textarea
-        name="text"
-        id="messageContents"
-        rows="10"
-        placeholder="メッセージ内容"
-      ></textarea>
-      <h3>リマインド日時</h3>
-      <form id="remindType">
-        <input type="radio" name="type" value="in" checked />
-        投稿からの時間で指定
-        <input type="radio" name="type" value="on" />
-        日時で指定
-      </form>
-      <button id="copy">Copy text</button>
-      <textarea name="out" id="out" rows="10"></textarea>
+    <div class="info">
+      <div id="wrapper">
+        <h3>送信先</h3>
+        <input
+          type="text"
+          id="messageSender"
+          placeholder="@メンバー or #チャンネル"
+        />
+        <h3>メッセージ内容</h3>
+        <textarea
+          name="text"
+          id="messageContents"
+          rows="10"
+          placeholder="メッセージ内容"
+        ></textarea>
+        <h3>リマインド日時</h3>
+        <form id="remindType">
+          <input type="radio" name="type" value="in" />
+          投稿からの時間で指定
+          <input type="radio" name="type" value="on" />
+          日時で指定
+        </form>
+      </div>
+      <div>
+        <button id="copy">Copy text</button>
+        <textarea name="out" id="out" rows="10"></textarea>
+      </div>
     </div>
     <img src="./icon_slack.png" class="png" alt="" srcset="" />
     <div id="main"></div>

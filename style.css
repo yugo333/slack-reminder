@@ -2,7 +2,7 @@ body {
   position: relative;
   margin: 0;
 }
-#info {
+.info {
   position: absolute;
   z-index: 10;
   height: 100vh;
