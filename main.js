@@ -3,14 +3,13 @@
   let select = document.querySelector("#word");
   let options = document.querySelectorAll("#word option");
   let out = document.getElementById("out");
-  let text = document.getElementById("text");
-  let tText;
 
   let copy = document.getElementById("copy");
 
   // 作成するメッセージ内容の各をここに保存する
   let createdMessageValues = {
     sender: "",
+    contents: "",
   };
 
   const messageSender = document.getElementById("messageSender");
@@ -30,15 +29,16 @@
     false
   );
 
-  text.addEventListener(
+  const messageContents = document.getElementById("messageContents");
+  messageContents.addEventListener(
     "keyup",
-    function () {
-      let s = text.value;
-      // out.textContent = s;
-      tText = `"${s}"`;
+    () => {
+      const { value } = messageContents;
+      createdMessageValues.contents = `"${value}"`;
     },
     false
   );
+
   select.addEventListener("change", function () {
     let index = this.value;
     if (mText === undefined) {
