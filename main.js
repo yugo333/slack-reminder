@@ -9,6 +9,7 @@
     sender: "",
     contents: "",
     remindType: "",
+    when: { in: { time: 0, unit: "" }, on: { date: "", time: "" } },
   };
 
   const messageSender = document.getElementById("messageSender");
@@ -67,6 +68,7 @@
 
     const inputNumber = document.createElement("input");
     inputNumber.type = "number";
+    inputNumber.name = "timeNumber";
     // クリックでは5単位で変わる。それより小さい単位は手入力出来る。
     inputNumber.step = 5;
     inputNumber.min = 0;
@@ -75,6 +77,7 @@
 
     const selectbox = document.createElement("select");
     selectbox.id = "selectTime";
+    selectbox.name = "timeUnit";
     inFormElement.appendChild(selectbox);
 
     // TODO: minutesとhoursであっているか確認。
@@ -88,6 +91,21 @@
       optionElement.text = object.text;
       optionElement.value = object.value;
       selectbox.appendChild(optionElement);
+    });
+
+    // inFormにchangeのイベントリスナーを付与。
+    inFormElement.addEventListener("change", (element) => {
+      if (element.target.name === "timeNumber") {
+        createdMessageValues.when.in.time = element.target.value;
+        // timeUnitを触らないと空のままになってしまうので、空の場合はminutesを入れる
+        if (!createdMessageValues.when.type) {
+          createdMessageValues.when.in.unit = "minutes";
+        }
+        return;
+      }
+      if (element.target.name === "timeUnit") {
+        createdMessageValues.when.in.unit = element.target.value;
+      }
     });
   };
 
@@ -105,11 +123,26 @@
 
     const inputDate = document.createElement("input");
     inputDate.type = "date";
+    inputDate.name = "datePicker";
     onFormElement.appendChild(inputDate);
 
     const inputTime = document.createElement("input");
     inputTime.type = "time";
+    inputTime.name = "timePicker";
     onFormElement.appendChild(inputTime);
+
+    // inFormにchangeのイベントリスナーを付与。
+    onFormElement.addEventListener("change", (element) => {
+      if (element.target.name === "datePicker") {
+        createdMessageValues.when.on.date = element.target.value;
+        return;
+      }
+
+      if (element.target.name === "timePicker") {
+        createdMessageValues.when.on.time = element.target.value;
+      }
+      console.log(createdMessageValues);
+    });
   };
 
   copy.addEventListener("click", () => {
