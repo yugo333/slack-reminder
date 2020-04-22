@@ -12,7 +12,7 @@
   const copy = document.getElementById("copy");
 
   inputText.addEventListener(
-    "keyup",
+    "change",
     () => {
       const s = inputText.value;
       if (s.match(/@/) || s.match(/#/)) {
