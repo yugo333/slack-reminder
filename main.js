@@ -1,7 +1,5 @@
 "use strict";
 {
-  let select = document.querySelector("#word");
-  let options = document.querySelectorAll("#word option");
   let out = document.getElementById("out");
 
   let copy = document.getElementById("copy");
@@ -10,6 +8,7 @@
   let createdMessageValues = {
     sender: "",
     contents: "",
+    remindType: "",
   };
 
   const messageSender = document.getElementById("messageSender");
@@ -39,22 +38,10 @@
     false
   );
 
-  select.addEventListener("change", function () {
-    let index = this.value;
-    if (mText === undefined) {
-      return alert("メンションを入力してください");
-    } else if (tText === undefined) {
-      return alert("本文を入力してください");
-    } else {
-      out.innerHTML =
-        "/remind" +
-        " " +
-        mText.trim() +
-        " " +
-        tText.trim() +
-        " " +
-        options[index].innerHTML;
-    }
+  const remindType = document.getElementById("remindType");
+  remindType.addEventListener("change", () => {
+    const { value } = remindType.type;
+    createdMessageValues.remindType = value;
   });
 
   copy.addEventListener("click", () => {
