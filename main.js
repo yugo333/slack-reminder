@@ -1,7 +1,5 @@
 "use strict";
 {
-  let out = document.getElementById("out");
-
   let copy = document.getElementById("copy");
 
   // 作成するメッセージ内容の各をここに保存する
@@ -10,6 +8,26 @@
     contents: "",
     remindType: "",
     when: { in: { time: 0, unit: "" }, on: { date: "", time: "" } },
+  };
+
+  const outPutText = document.getElementById("outPutText");
+
+  // この関数を実行してslackに実際に貼る文字列を作成する。
+  const createOutput = () => {
+    const { sender, contents, remindType, when } = createdMessageValues;
+    let outputStrings = "";
+    // TODO: outputStringsの形式は確認していない。
+    switch (remindType) {
+      case "in":
+        outputStrings = `/remind ${sender} "${contents}" ${remindType} ${when.in.time} ${when.in.unit}`;
+        break;
+      case "on":
+        outputStrings = `/remind ${sender} "${contents}" ${remindType} ${when.on.date} ${when.on.time}`;
+        break;
+      default:
+        break;
+    }
+    outPutText.value = outputStrings;
   };
 
   const messageSender = document.getElementById("messageSender");
@@ -34,7 +52,7 @@
     "change",
     () => {
       const { value } = messageContents;
-      createdMessageValues.contents = `"${value}"`;
+      createdMessageValues.contents = value;
     },
     false
   );
@@ -101,11 +119,11 @@
         if (!createdMessageValues.when.type) {
           createdMessageValues.when.in.unit = "minutes";
         }
-        return;
       }
       if (element.target.name === "timeUnit") {
         createdMessageValues.when.in.unit = element.target.value;
       }
+      createOutput();
     });
   };
 
@@ -135,13 +153,12 @@
     onFormElement.addEventListener("change", (element) => {
       if (element.target.name === "datePicker") {
         createdMessageValues.when.on.date = element.target.value;
-        return;
       }
 
       if (element.target.name === "timePicker") {
         createdMessageValues.when.on.time = element.target.value;
       }
-      console.log(createdMessageValues);
+      createOutput();
     });
   };
 
