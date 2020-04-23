@@ -124,7 +124,7 @@
 
   //最終的に下部のテキストエリアに出力される処理
   const lastForm = (e) => {
-    out.value = "/remind" + " " + mText.trim() + " " + tText.trim() + " " + e;
+    out.value = `/remind ${mText.trim()} ${tText.trim()} ${e}`;
   };
 
   //コピーボタン
