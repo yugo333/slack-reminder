@@ -117,7 +117,6 @@
       );
       // console.log(result.groups.year);
       const resultElement = `on ${result.groups.month}/${result.groups.day}/${result.groups.year} at ${result.groups.timeHours}:${result.groups.timeMinute}`;
-      // console.log(resultElement);
       lastForm(resultElement);
     });
   };
