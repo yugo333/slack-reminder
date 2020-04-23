@@ -31,7 +31,7 @@ h3 {
 #copy {
   position: absolute;
   right: 0px;
-  margin-top: 4px;
+  margin-top: -24px;
   cursor: pointer;
 }
 
@@ -47,21 +47,4 @@ h3 {
   width: 100px;
   margin: 20px;
   animation: rotation 2s ease 0s 1 alternate none running;
-  transition-duration: 1s;
-}
-@keyframes rotation {
-  0% {
-    transform: scale(0.3);
-  }
-
-  50% {
-    transform: scale(0.6) rotate(-45deg);
-  }
-
-  100% {
-    transform: scale(1) rotate(180deg);
-  }
-}
-.png:hover {
-  transform: rotate(640deg);
 }
