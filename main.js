@@ -50,11 +50,11 @@
       alert("本文を入力してください");
     } else {
       switch (index) {
-        case "1":
-        case "2":
+        case "selectMinutes":
+        case "selectHours":
           times();
           break;
-        case "3":
+        case "selectDayTime":
           dayTime();
           break;
         default:
@@ -63,7 +63,7 @@
     }
   });
 
-  //セレクター１,２,が押された時の処理
+  //セレクターselectMinutes,selectHours,が押された時の処理
   const times = () => {
     if (nextForm.hasChildNodes()) {
       nextForm.removeChild(nextForm.firstChild);
@@ -82,11 +82,11 @@
     inputForm.addEventListener("input", () => {
       const inputFormValue = inputForm.value.replace(/^0/g, "");
       switch (index) {
-        case "1":
+        case "selectMinutes":
           const putTime1 = "in " + inputFormValue.substr(0, 2) + " minutes";
           lastForm(putTime1);
           break;
-        case "2":
+        case "selectHours":
           const putTime2 = "in " + inputFormValue.substr(0, 2) + " hours";
           lastForm(putTime2);
           break;
@@ -95,7 +95,7 @@
       }
     });
   };
-  //セレクター３,が押された時
+  //セレクターselectDayTime,が押された時
   const dayTime = () => {
     if (nextForm.hasChildNodes()) {
       nextForm.removeChild(nextForm.firstChild);
@@ -111,21 +111,12 @@
     nextForm.appendChild(dayTimeElement);
 
     dayTimeElement.addEventListener("input", () => {
+      //下記の正規表現は、inputを.type = "dateTime-local"で指定しており記述が"2020-01-01T00:00"になってしまってます。それを"on 07/21/2019 at 07:00"の形に治すため正規表現で数字だけを摘出しresultElementで文法を書き換えてます
       const result = dayTimeElement.value.match(
         /(?<year>\d+)-(?<month>\d+)-(?<day>\d+)T(?<timeHours>\d+):(?<timeMinute>\d+)/u
       );
       // console.log(result.groups.year);
-      const resultElement =
-        " on " +
-        result.groups.month +
-        "/" +
-        result.groups.day +
-        "/" +
-        result.groups.year +
-        " at " +
-        result.groups.timeHours +
-        ":" +
-        result.groups.timeMinute;
+      const resultElement = `on ${result.groups.month}/${result.groups.day}/${result.groups.year} at ${result.groups.timeHours}:${result.groups.timeMinute}`;
       // console.log(resultElement);
       lastForm(resultElement);
     });
@@ -133,8 +124,7 @@
 
   //最終的に下部のテキストエリアに出力される処理
   const lastForm = (e) => {
-    out.innerText =
-      "/remind" + " " + mText.trim() + " " + tText.trim() + " " + e;
+    out.value = "/remind" + " " + mText.trim() + " " + tText.trim() + " " + e;
   };
 
   //コピーボタン
