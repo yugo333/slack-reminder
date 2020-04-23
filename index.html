@@ -25,24 +25,11 @@
       <h3>日付</h3>
       <select id="word">
         <option value="none">選択してください</option>
-        <option value="1">now</option>
-        <option value="2">in 15 minutes</option>
-        <option value="3">in 30 minutes</option>
-        <option value="4">in 60 minutes</option>
-        <option value="5">10:00</option>
-        <option value="6">12:00</option>
-        <option value="7">14:00</option>
-        <option value="8">16:00</option>
-        <option value="9">19:00</option>
-        <option value="none">（月）/（日）/（年）</option>
-        <option value="10">///</option>
-        <option value="11">at 15:０0 every Monday</option>
-        <option value="12">at 15:０0 every Wednesday</option>
-        <option value="13">at 15:０0 every Friday</option>
-        <option value="14">on the 1th of every month</option>
-        <option value="15">on the 15th of every month</option>
-        <option value="16">me</option>
+        <option value="selectMinutes">〇〇分後</option>
+        <option value="selectHours">〇〇時間後</option>
+        <option value="selectDayTime">日時指定</option>
       </select>
+      <div id="nextForm"></div>
       <button id="copy">Copy text</button>
       <textarea name="out" id="out" rows="10"></textarea>
     </div>
